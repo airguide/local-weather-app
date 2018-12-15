@@ -1,12 +1,16 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {CurrentWeatherComponent} from './current-weather/current-weather.component';
+import {WeatherService} from './weather/weather.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        CurrentWeatherComponent
       ],
+      providers: [ WeatherService ]
     }).compileComponents();
   }));
 
@@ -16,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'local-weather-app'`, () => {
+  it(`should have as title 'LocalWeatherApp'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('local-weather-app');
+    expect(app.title).toEqual('LocalWeatherApp');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to local-weather-app!');
+    expect(compiled.querySelector('h1').textContent).toContain('LocalCast Weather');
   });
 });
